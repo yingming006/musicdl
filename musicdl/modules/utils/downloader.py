@@ -28,6 +28,11 @@ class Downloader():
             if 'content-length' not in response.headers: return False
             total_size, chunk_size, downloaded_size = int(response.headers['content-length']), songinfo.get('chunk_size', 1024), 0
             savepath = os.path.join(songinfo['savedir'], f"{songinfo['savename']}.{songinfo['ext']}")
+            if os.path.exists(savepath):
+                timestamp = str(int(time.time()))[-3:]  # 截取时间戳后三位，重新拼接路径
+                filename, extension = os.path.splitext(songinfo['savename'])
+                timestamped_filename = f"{filename}_{timestamp}.{songinfo['ext']}"
+                savepath = os.path.join(songinfo['savedir'], timestamped_filename)
             text, fp = colorize('[FileSize]: %0.2fMB/%0.2fMB', 'pink'), open(savepath, 'wb')
             with alive_bar(manual=True) as bar:
                 for chunk in response.iter_content(chunk_size=chunk_size):
