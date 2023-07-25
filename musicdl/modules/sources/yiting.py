@@ -53,7 +53,7 @@ class YiTing(Base):
                 'album': filterBadCharacter(item.get('album_name', '-')),
                 'songname': filterBadCharacter(item.get('song_name', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('song_name', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item.get('singer_name', '-') + ' - ' + item.get('song_name', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

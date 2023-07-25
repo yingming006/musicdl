@@ -69,7 +69,7 @@ class FiveSing(Base):
                 'album': filterBadCharacter(response_json['data'].get('albumName', '-')),
                 'songname': filterBadCharacter(item.get('songName', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('songName', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item.get('singer', '-') + ' - ' + item.get('songName', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

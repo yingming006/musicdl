@@ -62,7 +62,7 @@ class Qianqian(Base):
                 'album': filterBadCharacter(item.get('albumTitle', '-')),
                 'songname': filterBadCharacter(item.get('title', '-')).split('–')[0].strip(),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('title', f'{keyword}_{int(time.time())}')).split('–')[0].strip(),
+                'savename': filterBadCharacter(item['artist'][0].get('name', '-') + ' - ' + item.get('title', f'{keyword}_{int(time.time())}')).split('–')[0].strip(),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

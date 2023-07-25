@@ -65,7 +65,7 @@ class Migu(Base):
                 'album': filterBadCharacter(item.get('albums', [{'name': '-'}])[0].get('name', '-')),
                 'songname': filterBadCharacter(item.get('name', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('name', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(','.join([s.get('name', '') for s in item.get('singers', [])]) + ' - ' + item.get('name', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

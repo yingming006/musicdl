@@ -46,7 +46,7 @@ class Ximalaya(Base):
                 'album': filterBadCharacter(item.get('albumTitle', '-')),
                 'songname': filterBadCharacter(item.get('title', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('title', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item.get('nickname', '-') + ' - ' + item.get('title', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': '',
                 'filesize': '-',

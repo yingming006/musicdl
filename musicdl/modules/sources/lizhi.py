@@ -41,7 +41,7 @@ class Lizhi(Base):
                 'album': filterBadCharacter(item['radio'].get('name', '-')),
                 'songname': filterBadCharacter(item['audio'].get('name', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item['audio'].get('name', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item['radio'].get('user_name', '-') + ' - ' + item['audio'].get('name', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': '',
                 'filesize': filesize,

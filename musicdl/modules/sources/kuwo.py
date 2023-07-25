@@ -62,7 +62,7 @@ class Kuwo(Base):
                 'album': filterBadCharacter(item.get('album', '-')),
                 'songname': filterBadCharacter(item.get('name', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('name', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item.get('artist', '-') + ' - ' + item.get('name', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

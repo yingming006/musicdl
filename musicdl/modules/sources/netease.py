@@ -111,7 +111,7 @@ class Netease(Base):
                 'album': filterBadCharacter(item.get('al', {}).get('name', '-')),
                 'songname': filterBadCharacter(item.get('name', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('name', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(','.join([s.get('name', '') for s in item.get('ar')]) + ' - ' + item.get('name', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

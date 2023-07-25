@@ -72,7 +72,7 @@ class Kugou(Base):
                 'album': filterBadCharacter(item.get('AlbumName', '-')),
                 'songname': filterBadCharacter(item.get('SongName', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('SongName', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(item.get('SingerName', '-') + ' - ' + item.get('SongName', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'filesize': filesize,
                 'lyric': lyric,

@@ -67,7 +67,7 @@ class Joox(Base):
                 'album': filterBadCharacter(response_json.get('malbum', '-')),
                 'songname': filterBadCharacter(response_json.get('msong', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(response_json.get('msong', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(','.join([base64.b64decode(s['name']).decode('utf-8') for s in item.get('singer_list', [])]) + ' - ' + response_json.get('msong', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,

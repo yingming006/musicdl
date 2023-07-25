@@ -106,7 +106,7 @@ class QQMusic(Base):
                 'album': filterBadCharacter(item.get('album', {}).get('title', '')),
                 'songname': filterBadCharacter(item.get('title', '-')),
                 'savedir': cfg['savedir'],
-                'savename': filterBadCharacter(item.get('title', f'{keyword}_{int(time.time())}')),
+                'savename': filterBadCharacter(','.join([s.get('name', '') for s in item.get('singer', [])]) + ' - ' + item.get('title', f'{keyword}_{int(time.time())}')),
                 'download_url': download_url,
                 'lyric': lyric,
                 'filesize': filesize,
