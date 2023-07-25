@@ -25,6 +25,7 @@ class Downloader():
         touchdir(songinfo['savedir'])
         with session.get(songinfo['download_url'], headers=headers, stream=True) as response:
             if response.status_code not in [200]: return False
+            if 'content-length' not in response.headers: return False
             total_size, chunk_size, downloaded_size = int(response.headers['content-length']), songinfo.get('chunk_size', 1024), 0
             savepath = os.path.join(songinfo['savedir'], f"{songinfo['savename']}.{songinfo['ext']}")
             text, fp = colorize('[FileSize]: %0.2fMB/%0.2fMB', 'pink'), open(savepath, 'wb')
